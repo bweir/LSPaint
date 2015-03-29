@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>NewFile</class>
+ <widget class="QDialog" name="NewFile">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>232</width>
+    <height>277</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>New File</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="sizeConstraint">
+    <enum>QLayout::SetFixedSize</enum>
+   </property>
+   <item>
+    <widget class="QGroupBox" name="sizeBox">
+     <property name="title">
+      <string>Image Size</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="widthLabel">
+        <property name="text">
+         <string>Width:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QDoubleSpinBox" name="widthEdit">
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="decimals">
+         <number>0</number>
+        </property>
+        <property name="maximum">
+         <double>256.000000000000000</double>
+        </property>
+        <property name="value">
+         <double>16.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="labelPixels">
+        <property name="text">
+         <string>pixels</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="heightLabel">
+        <property name="text">
+         <string>Height:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QDoubleSpinBox" name="heightEdit">
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="decimals">
+         <number>0</number>
+        </property>
+        <property name="maximum">
+         <double>256.000000000000000</double>
+        </property>
+        <property name="value">
+         <double>16.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QLabel" name="labelPixels_2">
+        <property name="text">
+         <string>pixels</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+     <zorder>widthLabel</zorder>
+     <zorder>heightEdit</zorder>
+     <zorder>heightLabel</zorder>
+     <zorder>widthEdit</zorder>
+     <zorder>labelPixels_2</zorder>
+     <zorder>labelPixels</zorder>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="splitIntoFrames">
+     <property name="text">
+      <string>Split into frames</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="frameSizeBox">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="title">
+      <string>Frame Size</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <widget class="QLabel" name="frameWidthLabel">
+        <property name="text">
+         <string>Width:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" rowspan="2">
+       <widget class="QDoubleSpinBox" name="frameWidthEdit">
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="suffix">
+         <string/>
+        </property>
+        <property name="decimals">
+         <number>0</number>
+        </property>
+        <property name="maximum">
+         <double>256.000000000000000</double>
+        </property>
+        <property name="value">
+         <double>16.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2" rowspan="2">
+       <widget class="QLabel" name="labelPixels_3">
+        <property name="text">
+         <string>pixels</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="frameHeightLabel">
+        <property name="text">
+         <string>Height:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QDoubleSpinBox" name="frameHeightEdit">
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="decimals">
+         <number>0</number>
+        </property>
+        <property name="maximum">
+         <double>256.000000000000000</double>
+        </property>
+        <property name="value">
+         <double>16.000000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="labelPixels_4">
+        <property name="text">
+         <string>pixels</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>NewFile</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>NewFile</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
