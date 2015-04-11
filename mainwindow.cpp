@@ -7,6 +7,7 @@
 #include <QFileInfo>
 #include <QFileDialog>
 
+#include "color.h"
 #include "spriteeditor.h"
 
 #include "dialogs/newfile.h"
@@ -16,13 +17,23 @@ MainWindow::MainWindow(QWidget * parent)
 {
     ui.setupUi(this);
 
-    openFile("dagr_2b.png");
-    qDebug() << " STUFF";
+//    openFile("dagr_2b.png");
 
     connect(ui.action_New, SIGNAL(triggered()), this, SLOT(newFile()));
     connect(ui.action_Open, SIGNAL(triggered()), this, SLOT(open()));
     connect(ui.action_Save, SIGNAL(triggered()), this, SLOT(save()));
     connect(ui.actionSave_as, SIGNAL(triggered()), this, SLOT(saveAs()));
+    connect(ui.actionQuit, SIGNAL(triggered()), this, SLOT(close()));
+
+    // configure color schemes
+    foreach (QString key, Color().keys())
+        ui.colorschemes->addItem(key);
+
+    palette = ui.colorschemes->itemText(0);
+
+    connect(ui.colorschemes, SIGNAL(currentIndexChanged(const QString &)),
+            this, SLOT(setColorPalette(const QString &)));
+
 }
 
 
@@ -134,6 +145,12 @@ void MainWindow::openFile(const QString & name)
 
     qDebug() << framew << frameh;
 
+    img = img.convertToFormat(QImage::Format_RGB32);
+    img = img.convertToFormat(QImage::Format_Indexed8, Color()["Plain"]);
+
+
+    img.setColorTable(Color()["Plain"]);
+
     QPixmap pixmap = QPixmap::fromImage(img);
     editor->setPixmap(pixmap);
 
@@ -149,4 +166,21 @@ void MainWindow::closeFile()
         editor->close();
         ui.editor->removeTab(0);
     }
+}
+
+
+void MainWindow::setColorPalette(const QString & name)
+{
+    SpriteEditor * editor = (SpriteEditor *) ui.editor->currentWidget();
+    if (!editor) return;
+
+    QImage img = editor->pixmap().toImage();
+
+    img = img.convertToFormat(QImage::Format_Indexed8, Color()[palette]);
+    img.setColorTable(Color()[name]);
+    palette = name;
+
+    QPixmap pixmap = QPixmap::fromImage(img);
+
+    editor->setPixmap(pixmap);
 }

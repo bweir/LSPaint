@@ -11,6 +11,7 @@ class MainWindow : public QMainWindow
 private:
     Ui::MainWindow ui;
     QString filename;
+    QString palette;
 public:
     MainWindow(QWidget * parent = 0);
 
@@ -23,5 +24,6 @@ public slots:
     void saveFile(const QString & filename);
     void openFile(const QString & filename);
     void closeFile();
+    void setColorPalette(const QString & name);
 };
 
